@@ -15,27 +15,49 @@
 #     intersecting
 # end
 
-# doesn't pass the performance test either :)
-def solution(a)
-    from = (0...a.count).map do |i|
-        [i - a[i], i + a[i]]
-    end.sort_by do |e|
-        e.first
-    end
+# second solution, doesn't pass the performance test either :)
+# def solution(a)
+#     from = (0...a.count).map do |i|
+#         [i - a[i], i + a[i]]
+#     end.sort_by do |e|
+#         e.first
+#     end
     
-    intersecting = 0
-    for i in (0...from.count)
-        for j in (i + 1...from.count)
-            if from[i].last >= from[j].first 
-                intersecting += 1
-                return -1 if intersecting > 10_000_000
-            else
-                break # an optimization, but apparently still O(2)
-            end
-        end
-    end
-    intersecting
-end
+#     intersecting = 0
+#     for i in (0...from.count)
+#         for j in (i + 1...from.count)
+#             if from[i].last >= from[j].first 
+#                 intersecting += 1
+#                 return -1 if intersecting > 10_000_000
+#             else
+#                 break # an optimization, but apparently still O(2)
+#             end
+#         end
+#     end
+#     intersecting
+# end
 
-# correct solution :)
-# https://github.com/jsuchal/codility/blob/master/beta2010.rb
+# correct solution
+def solution(a)
+    points = []
+    a.each_with_index { |r, y| 
+        points << [y - r, :a] # starts
+        points << [y + r, :b] # ends
+    }
+    points.sort!
+    
+    intersect = 0
+    active = 0
+    points.each { |p|
+        case p[1]
+        when :a # starts
+            intersect += active
+            return -1 if intersect > 10_000_000
+            
+            active += 1
+        when :b # ends
+            active -= 1
+        end
+    }
+    intersect
+end
