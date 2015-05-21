@@ -12,11 +12,11 @@ class TestSolution < Minitest::Test
         assert_equal output, solution(input)
     end
 
-    def test_simple_1
-        input = nil
-        output = nil
-        assert_equal output, solution(input)
-    end
+    # def test_simple_1
+    #     input = nil
+    #     output = nil
+    #     assert_equal output, solution(input)
+    # end
 
     # def test_empty
     #     input = [] 
