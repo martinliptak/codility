@@ -5,30 +5,26 @@ require "minitest/autorun"
 require "byebug"
 require "timeout"
 
+# byebug
+# solution(nil)
+# exit
+
 class TestSolution < Minitest::Test
     def test_default
-        input = nil
-        output = nil
-        assert_equal output, solution(input)
+        assert_equal nil, solution(nil)
     end
 
-    # def test_simple_1
-    #     input = nil
-    #     output = nil
-    #     assert_equal output, solution(input)
+    # def test_simple
+    #     assert_equal nil, solution(nil)
     # end
 
-    # def test_empty
-    #     input = [] 
-    #     output = 0
-    #     assert_equal output, solution(input)
+    # def test_small
+    #     assert_equal nil, solution(nil)
     # end
 
     # def test_large
-    #     input = [0] * 100_000 
-    #     output = 0
     #     Timeout::timeout(6) {
-    #         assert_equal output, solution(input)
+    #         assert_equal 0, solution([0] * 100_000 )
     #     }
     # end
 end
