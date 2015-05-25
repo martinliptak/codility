@@ -49,7 +49,7 @@ class TestSolution < Minitest::Test
 
     def test_simple_1
         assert_equal 1, solution([1], [2])
-        assert_equal 0, solution([1, 2], [2, 3])
+        assert_equal 1, solution([1, 2], [2, 3])
         assert_equal 2, solution([1, 3], [2, 4])
         assert_equal 3, solution([1, 3, 5], [2, 4, 6])
     end
@@ -64,7 +64,7 @@ class TestSolution < Minitest::Test
 
     def test_large
         Timeout::timeout(6) {
-            assert_equal 0, solution([1] * 30_000, [2] * 30_000)
+            assert_equal 1, solution([1] * 30_000, [2] * 30_000)
         }
     end
 end
