@@ -55,12 +55,42 @@ def solution(a)
     result
 end
 
+# One more solution
+#
+# def solution(a)
+#     a.sort!
+
+#     result = (a[0] + a[0]).abs
+#     for i in (0...a.count)
+#         result = [result, binary_search(a, i)].min
+#     end
+#     result
+# end
+
+# def binary_search(a, i)
+#     from = 0
+#     to = a.count
+#     current = nil
+#     while from <= to
+#         mid = (from + to) / 2
+#         current = (a[i] + a[mid]).abs
+#         if mid + 1 < a.count && (a[i] + a[mid + 1]).abs < current
+#             from = mid + 1
+#         elsif mid - 1 >= 0 && (a[i] + a[mid - 1]).abs < current
+#             to = mid - 1
+#         else
+#             break
+#         end
+#     end
+#     current
+# end
+
 require "minitest/autorun"
 require "byebug"
 require "timeout"
 
 # byebug
-# solution([-3, 1, 10])
+# solution([1, 4, -3])
 # exit
 
 class TestSolution < Minitest::Test
