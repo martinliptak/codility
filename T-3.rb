@@ -4,7 +4,7 @@ def solution(a)
     lines = []
     a.each_with_index { |v, i|
         step = current.clone
-        
+
         case direction
         when :north
             step[1] -= v
@@ -27,9 +27,9 @@ def solution(a)
             }
         end
 
-        lines << [current, step]
         #todo: limit to accessible lines
 
+        lines << [current, step]
         current = step
     }
     0
